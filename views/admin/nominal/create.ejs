@@ -1,0 +1,81 @@
+<%- include ../../partials/header.ejs %> <%- include ../../partials/navbar.ejs
+%> <%- include ../../partials/sidebar.ejs %>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Kategori</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/nominal">Nominal</a></li>
+            <li class="breadcrumb-item active">Tambah</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Form tambah nominal</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form action="/nominal/create" method="POST">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="coinName">Masukan nama item</label>
+                  <input
+                    type="text"
+                    name="coinName"
+                    class="form-control mb-3"
+                    id="coinName"
+                    placeholder="Masukan nama item"
+                    required
+                  />
+                  <label for="coinQuantity">Masukan jumlah item</label>
+                  <input
+                    type="text"
+                    name="coinQuantity"
+                    class="form-control mb-3"
+                    id="coinQuantity"
+                    placeholder="Masukan jumlah item"
+                    required
+                  />
+                  <label for="price">Masukan harga item</label>
+                  <input
+                    type="text"
+                    name="price"
+                    class="form-control mb-3"
+                    id="price"
+                    placeholder="Masukan harga item"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<%- include ../../partials/footer.ejs %> <%- include ../../partials/js.ejs %>
