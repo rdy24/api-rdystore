@@ -17,11 +17,11 @@ const articleRouter = require("./app/article/router");
 const bankRouter = require("./app/bank/router");
 const paymentRouter = require("./app/payment/router");
 const transactionRouter = require("./app/transaction/router");
-// const playerRouter = require("./app/player/router");
-// const authRouter = require("./app/auth/router");
+const playerRouter = require("./app/player/router");
+const authRouter = require("./app/auth/router");
 
 const app = express();
-// const URL = `/api/v1`;
+const URL = `/api/v1`;
 app.use(cors());
 
 // view engine setup
@@ -60,8 +60,8 @@ app.use("/payment", paymentRouter);
 app.use("/transaction", transactionRouter);
 
 // api
-// app.use(`${URL}/players`, playerRouter);
-// app.use(`${URL}/auth`, authRouter);
+app.use(`${URL}/players`, playerRouter);
+app.use(`${URL}/auth`, authRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

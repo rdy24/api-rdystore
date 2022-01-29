@@ -1,5 +1,4 @@
 const Player = require("../player/model");
-const User = require("../users/model");
 const path = require("path");
 const fs = require("fs");
 const config = require("../../config");
@@ -30,13 +29,13 @@ module.exports = {
 
         src.on("end", async () => {
           try {
-            const user = new User({ ...payload, avatar: filename });
+            const player = new Player({ ...payload, avatar: filename });
 
-            await user.save();
+            await player.save();
 
-            delete user._doc.password;
+            delete player._doc.password;
 
-            res.status(201).json({ data: user });
+            res.status(201).json({ data: player });
           } catch (err) {
             if (err && err.name === "ValidationError") {
               return res.status(422).json({
@@ -49,13 +48,13 @@ module.exports = {
           }
         });
       } else {
-        let user = new User(payload);
+        let player = new Player(payload);
 
-        await user.save();
+        await player.save();
 
-        delete user._doc.password;
+        delete player._doc.password;
 
-        res.status(201).json({ data: user });
+        res.status(201).json({ data: player });
       }
     } catch (err) {
       if (err && err.name === "ValidationError") {
@@ -71,18 +70,18 @@ module.exports = {
   signin: (req, res, next) => {
     const { email, password } = req.body;
 
-    User.findOne({ email: email })
-      .then((user) => {
-        if (user) {
-          const checkPassword = bcrypt.compareSync(password, user.password);
+    Player.findOne({ email: email })
+      .then((player) => {
+        if (player) {
+          const checkPassword = bcrypt.compareSync(password, player.password);
           if (checkPassword) {
             const token = jwt.sign(
               {
-                user: {
-                  id: user.id,
-                  name: user.name,
-                  email: user.email,
-                  avatar: user.avatar,
+                player: {
+                  id: player.id,
+                  name: player.name,
+                  email: player.email,
+                  avatar: player.avatar,
                 },
               },
               config.jwtKey

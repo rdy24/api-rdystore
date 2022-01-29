@@ -33,6 +33,11 @@ let playerSchema = mongoose.Schema(
     },
     avatar: { type: String },
     fileName: { type: String },
+
+    favorite: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+    },
   },
   { timestamps: true }
 );

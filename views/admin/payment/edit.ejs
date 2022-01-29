@@ -1,23 +1,23 @@
-<%- include ../../partials/header.ejs %> <%- include ../../partials/navbar.ejs
-%> <%- include ../../partials/sidebar.ejs %>
+<%- include ../../partials/header.ejs %>
+<%- include ../../partials/navbar.ejs %>
+<%- include ../../partials/sidebar.ejs %>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Kategori</h1>
+          <h1>Jenis Pembayaran</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/bank">Bank</a></li>
-            <li class="breadcrumb-item active">Edit</li>
+            <li class="breadcrumb-item"><a href="/payment">Jenis Pembayaran</a></li>
+            <li class="breadcrumb-item active">Ubah</li>
           </ol>
         </div>
       </div>
-    </div>
-    <!-- /.container-fluid -->
+    </div><!-- /.container-fluid -->
   </section>
 
   <!-- Main content -->
@@ -27,44 +27,41 @@
         <div class="col-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Form edit bank</h3>
+              <h3 class="card-title">Form ubah jenis pembayaran</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form action="/bank/edit/<%= bank._id %>?_method=PUT" method="POST">
+            <form action="/payment/edit/<%= payment._id %>?_method=PUT" method="POST">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="name">Masukan nama pemilik</label>
-                  <input
-                    type="text"
-                    name="name"
-                    class="form-control mb-3"
-                    id="name"
-                    placeholder="Masukan nama pemilik"
-                    value="<%= bank.name %>"
-                    required
-                  />
-                  <label for="bankName">Masukan nama bank</label>
-                  <input
-                    type="text"
-                    name="bankName"
-                    class="form-control mb-3"
-                    id="bankName"
-                    placeholder="Masukan nama bank"
-                    value="<%= bank.bankName %>"
-                    required
-                  />
-                  <label for="noRekening">Masukan no rekening</label>
-                  <input
-                    type="text"
-                    name="noRekening"
-                    class="form-control mb-3"
-                    id="noRekening"
-                    placeholder="Masukan no rekening"
-                    value="<%= bank.noRekening %>"
-                    required
-                  />
+                  <label for="type">Tipe</label>
+                  <input type="text" name="type" value="<%= payment.type %>" class="form-control" id="type" placeholder="Masukan tipe pembayaran" required>
                 </div>
+                <div class="form-group">
+                  <label>Bank</label>
+                  <div class="select2-purple">
+                    <select 
+                      class="form-control select2" 
+                      multiple="multiple" 
+                      data-placeholder="Pilih bank"
+                      style="width: 100%;"
+                      name="banks" 
+                      required>
+                      <% banks.forEach(bank=>{ %>
+                        <option value="<%= bank._id %>"
+                          <% payment.banks.forEach(paymentBank =>{ %>
+                            <% if(bank._id.toString() === paymentBank._id.toString()){ %>
+                              selected
+                            <% } %>
+                          <% }) %>
+                          ><%= bank.name %>-<%= bank.nameBank %>-<%= bank.noRekening %></option>
+                      <% }) %>
+                      
+                    </select>
+
+                  </div>
+                </div>
+                
               </div>
               <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -81,4 +78,5 @@
   <!-- /.content -->
 </div>
 
-<%- include ../../partials/footer.ejs %> <%- include ../../partials/js.ejs %>
+<%- include ../../partials/footer.ejs %>
+<%- include ../../partials/js.ejs %>
