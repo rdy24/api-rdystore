@@ -10,7 +10,6 @@
     />
     <span class="brand-text font-weight-light">Youpay Admin</span>
   </a>
-
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar Menu -->
@@ -22,7 +21,10 @@
         data-accordion="false"
       >
         <li class="nav-item">
-          <a href="/" class="nav-link">
+          <a
+            href="/"
+            class="nav-link <%= title === 'Dashboard' ? 'active' : '' %>"
+          >
             <i class="nav-icon fas fa-home"></i>
             <p>Beranda</p>
           </a>
@@ -30,34 +32,57 @@
         <li class="nav-header">Master</li>
 
         <li class="nav-item">
-          <a href="/category" class="nav-link">
+          <a
+            href="/category"
+            class="nav-link <%= title === 'Category' || title === 'Add Category' || title === 'Edit Category' ? 'active' : '' %>"
+          >
             <i class="nav-icon far fa-calendar-alt"></i>
             <p>Kategori</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/nominal" class="nav-link">
+          <a
+            href="/nominal"
+            class="nav-link <%= title === 'Nominal' || title === 'Add Nominal' || title === 'Edit Nominal' ? 'active' : '' %>"
+          >
             <i class="nav-icon fas fa-tasks"></i>
             <p>Nominal</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/voucher" class="nav-link">
+          <a
+            href="/voucher"
+            class="nav-link <%= title === 'Voucher' || title === 'Add Voucher' || title === 'Edit Voucher' ? 'active' : '' %>"
+          >
             <i class="nav-icon far fa-image"></i>
             <p>Voucher</p>
           </a>
         </li>
-
+        <li class="nav-item">
+          <a
+            href="/article"
+            class="nav-link <%= title === 'Article' || title === 'Add Article' || title === 'Edit Article' ? 'active' : '' %>"
+          >
+            <i class="nav-icon fa fa-podcast"></i>
+            <p>Article</p>
+          </a>
+        </li>
         <li class="nav-header">Metode Pembayaran</li>
 
         <li class="nav-item">
-          <a href="/bank" class="nav-link">
+          <a
+            href="/bank"
+            class="nav-link <%= title === 'Bank' || title === 'Add Bank' || title === 'Edit Bank' ? 'active' : '' %>"
+          >
             <i class="nav-icon fas fa-money-check"></i>
             <p>Bank</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/payment" class="nav-link">
+          <a
+            href="/payment"
+            class="nav-link <%= title === 'Payment' || title === 'Add Payment' || title === 'Edit Payment' ? 'active' : '' %>"
+          >
             <i class="nav-icon fas fa-money-check-alt"></i>
             <p>Jenis Pembayaran</p>
           </a>
@@ -65,7 +90,10 @@
         <li class="nav-header">Transaksi</li>
 
         <li class="nav-item">
-          <a href="/transaction" class="nav-link">
+          <a
+            href="/transaction"
+            class="nav-link <%= title === 'Transaction' ? 'active' : '' %>"
+          >
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>Transaksi</p>
           </a>

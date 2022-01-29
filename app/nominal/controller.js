@@ -15,7 +15,7 @@ module.exports = {
         nominal,
         alert,
         name: req.session.user.name,
-        title: "Youpay Admin | Nominal",
+        title: "Nominal",
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
@@ -27,7 +27,7 @@ module.exports = {
     try {
       res.render("admin/nominal/create", {
         name: req.session.user.name,
-        title: "Youpay Admin | Add Nominal",
+        title: "Add Nominal",
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
@@ -62,7 +62,7 @@ module.exports = {
       res.render("admin/nominal/edit", {
         name: req.session.user.name,
         nominal,
-        title: "Youpay Admin | Edit Nominal",
+        title: "Edit Nominal",
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);

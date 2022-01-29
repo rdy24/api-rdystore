@@ -1,0 +1,45 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Judul</th>
+      <th>Gambar</th>
+      <th>Excrept</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 0; i < article.length; i++){ %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= article[i].judul %></td>
+      <td>
+        <img
+          src="http://localhost:4000//uploads/<%= article[i].image %>"
+          width="200px"
+        />
+      </td>
+      <td><%- article[i].excrept %></td>
+
+      <td>
+        <form
+          action="/article/delete/<%= article[i]._id %>?_method=DELETE"
+          method="post"
+        >
+          <a
+            href="/article/edit/<%= article[i]._id %>"
+            class="btn btn-info btn-sm"
+          >
+            <i class="fas fa-pencil-alt"></i>
+            Ubah
+          </a>
+          <button class="btn btn-danger btn-sm">
+            <i class="fas fa-trash"></i>
+            Hapus
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

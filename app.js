@@ -13,6 +13,10 @@ const dashboardRouter = require("./app/dashboard/router");
 const categoryRouter = require("./app/category/router");
 const nominalRouter = require("./app/nominal/router");
 const voucherRouter = require("./app/voucher/router");
+const articleRouter = require("./app/article/router");
+const bankRouter = require("./app/bank/router");
+const paymentRouter = require("./app/payment/router");
+const transactionRouter = require("./app/transaction/router");
 // const playerRouter = require("./app/player/router");
 // const authRouter = require("./app/auth/router");
 
@@ -43,12 +47,17 @@ app.use(
   "/adminlte",
   express.static(path.join(__dirname, "/node_modules/admin-lte/"))
 );
+app.use("/trix", express.static(path.join(__dirname, "/node_modules/trix/")));
 
 app.use("/", usersRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/category", categoryRouter);
 app.use("/nominal", nominalRouter);
 app.use("/voucher", voucherRouter);
+app.use("/article", articleRouter);
+app.use("/bank", bankRouter);
+app.use("/payment", paymentRouter);
+app.use("/transaction", transactionRouter);
 
 // api
 // app.use(`${URL}/players`, playerRouter);

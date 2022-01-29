@@ -20,7 +20,7 @@ module.exports = {
         voucher,
         alert,
         name: req.session.user.name,
-        title: "Youpay Admin | Voucher",
+        title: "Voucher",
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
@@ -36,7 +36,7 @@ module.exports = {
         name: req.session.user.name,
         category,
         nominal,
-        title: "Youpay Admin | Add Voucher",
+        title: "Add Voucher",
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);
@@ -120,7 +120,7 @@ module.exports = {
         voucher,
         category,
         nominal,
-        title: "Youpay Admin | Edit Voucher",
+        title: "Edit Voucher",
       });
     } catch (err) {
       req.flash("alertMessage", `${err.message}`);

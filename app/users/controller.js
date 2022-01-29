@@ -12,7 +12,7 @@ module.exports = {
       if (req.session.user === null || req.session.user === undefined) {
         res.render("admin/users/view_signin", {
           alert,
-          title: "Youpay Admin | Sign in",
+          title: "Sign in",
         });
       } else {
         res.redirect("/dashboard");
