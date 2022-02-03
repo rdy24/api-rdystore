@@ -29,6 +29,7 @@ module.exports = {
         .populate("category")
         .populate("nominals")
         .populate("user", "_id name phoneNumber");
+      const payment = await Payment.find();
 
       if (!voucher) {
         return res
@@ -36,7 +37,7 @@ module.exports = {
           .json({ message: "voucher game tidak ditemukan.!" });
       }
 
-      res.status(200).json({ data: voucher });
+      res.status(200).json({ data: { detail: voucher, payment: payment } });
     } catch (err) {
       res.status(500).json({ message: err.message || `Internal server error` });
     }
