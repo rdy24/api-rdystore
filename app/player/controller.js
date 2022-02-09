@@ -178,8 +178,7 @@ module.exports = {
       ]);
 
       res.status(200).json({
-        data: history,
-        total: total.length ? total[0].value : 0,
+        data: { history: history, total: total.length ? total[0].value : 0 },
       });
     } catch (err) {
       res.status(500).json({ message: err.message || "Internal Server Error" });
@@ -224,7 +223,7 @@ module.exports = {
         .populate("category")
         .sort({ updatedAt: -1 });
 
-      res.status(200).json({ data: history, count: count });
+      res.status(200).json({ data: { history: history, count: count } });
     } catch (err) {
       res.status(500).json({ message: err.message || `Internal server error` });
     }
